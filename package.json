@@ -2,7 +2,16 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "docker:start": "cd ../docker && docker-compose up -d workspace mysql nginx adminer",
+        "docker:start-build": "cd ../docker && docker-compose up -d --build workspace mysql nginx adminer",
+        "docker:stop": "cd ../docker && docker-compose down",
+        "docker:restart": "npm run docker:stop && docker-compose restart",
+        "docker:restart-service": "npm run docker:stop && npm run docker:start",
+        "docker:restart-build": "npm run docker:stop && npm run docker:start-build",
+        "docker:ps": "cd ../docker && docker-compose ps",
+        "docker:workspace": "cd ../docker && docker-compose exec --user=laradock workspace zsh",
+        "docker:cmd": "cd ../docker && docker-compose"
     },
     "devDependencies": {
         "axios": "^0.27",
