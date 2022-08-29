@@ -1,16 +1,16 @@
 <template>
     <div class="message-area" ref="message">
-        <message-component 
-            v-for="message in messages" 
-            :key="message.id" 
+        <message-component
+            v-for="message in messages"
+            :key="message.id"
             :message="message">
-        </message-component>      
+        </message-component>
     </div>
 </template>
 
 <script>
 
-    import Event from '../event.js';
+    // import Event from '../event.js';
 
     export default {
         data() {
@@ -19,10 +19,10 @@
             }
         },
         mounted() {
-            axios.get('/message').then((response) => {
-                this.messages = response.data;
-            });
-            Event.$on('added_message', (message) => {
+            // axios.get('/message').then((response) => {
+            //     this.messages = response.data;
+            // });
+            this.$on('added_message', (message) => {
                 this.messages.unshift(message);
                 if(message.selfMessage) {
                     this.$refs.message.scrollTop = 0;

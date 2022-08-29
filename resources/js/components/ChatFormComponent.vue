@@ -16,7 +16,7 @@
 
 <script>
 
-    import Event from '../event.js';
+    // import Event from '../event.js';
 
     export default {
         data() {
@@ -29,29 +29,25 @@
                 if(e.keyCode === 13 && !e.shiftKey) {
                     e.preventDefault();
                     this.sendMessage();
-                }        
+                }
             },
             sendMessage() {
                 if(!this.body || this.body.trim() === '') {
                     return
                 }
                 let messageObj = this.buildMessage();
-                Event.$emit('added_message', messageObj);
-                axios.post('/message', {
-                    body: this.body.trim()
-                }).catch(() => {
-                    console.log('failed');
-                });
+                this.$emit('added_message', messageObj);
+                // axios.post('/message', {
+                //     body: this.body.trim()
+                // }).catch(() => {
+                //     console.log('failed');
+                // });
                 this.body = null;
             },
             buildMessage() {
                 return {
                     id: Date.now(),
                     body: this.body,
-                    selfMessage: true,
-                    user: {
-                        name: Laravel.user.name
-                    }
                 }
             }
         }
@@ -71,5 +67,4 @@
     .notice {
         color: #aaa
     }
-    
 </style>
