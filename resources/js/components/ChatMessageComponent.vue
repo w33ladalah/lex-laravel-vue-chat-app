@@ -21,25 +21,12 @@
         },
         methods: {
             setMessage(message) {
-                // axios.get('/message').then((response) => {
-                //     if (response.data.status == 'SUCCESS')
-                //         this.messages = response.data.data;
-                // });
-
-                // this.messages.unshift(message);
                 this.messages.push(message);
 
                 if(message.selfMessage) {
                     this.$refs.message.scrollTop = 0;
                 }
             }
-
-            // this.$listeners('added_message', (message) => {
-            //     this.messages.unshift(message);
-            //     if(message.selfMessage) {
-            //         this.$refs.message.scrollTop = 0;
-            //     }
-            // });
         }
     }
 </script>

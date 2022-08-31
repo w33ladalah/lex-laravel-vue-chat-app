@@ -4,7 +4,7 @@
             <div class="card-header">Chats</div>
             <div class="card-body">
                 <ChatMessage ref="chatMessage"></ChatMessage>
-                <ChatForm @message-added="addMessageCallback"></ChatForm>
+                <ChatForm @message-added="addMessageCallback" @bot-response-received="displayBotResponse"></ChatForm>
             </div>
         </div>
     </div>
@@ -21,6 +21,9 @@ export default {
     },
     methods: {
         addMessageCallback(message) {
+            this.$refs.chatMessage.setMessage(message)
+        },
+        displayBotResponse(message) {
             this.$refs.chatMessage.setMessage(message)
         }
     }

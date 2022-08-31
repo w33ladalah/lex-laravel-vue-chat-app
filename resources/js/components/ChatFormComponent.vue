@@ -38,6 +38,12 @@
                 axios.post('/message', {
                     body: messageObj.body,
                     type: messageObj.type,
+                }).then((results) => {
+                    this.$emit('bot-response-received', {
+                        id: Date.now(),
+                        body: results.data.response.body,
+                        type: results.data.response.type
+                    });
                 }).catch(() => {
                     console.log('failed');
                 });
