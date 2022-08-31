@@ -15,9 +15,6 @@
 </template>
 
 <script>
-
-    // import Event from '../event.js';
-
     export default {
         data() {
             return {
@@ -36,18 +33,22 @@
                     return
                 }
                 let messageObj = this.buildMessage();
-                this.$emit('added_message', messageObj);
-                // axios.post('/message', {
-                //     body: this.body.trim()
-                // }).catch(() => {
-                //     console.log('failed');
-                // });
+                this.$emit('message-added', messageObj);
+
+                axios.post('/message', {
+                    body: messageObj.body,
+                    type: messageObj.type,
+                }).catch(() => {
+                    console.log('failed');
+                });
+
                 this.body = null;
             },
             buildMessage() {
                 return {
                     id: Date.now(),
                     body: this.body,
+                    type: 'client'
                 }
             }
         }

@@ -3,8 +3,8 @@
         <div class="card">
             <div class="card-header">Chats</div>
             <div class="card-body">
-                <ChatMessage></ChatMessage>
-                <ChatForm></ChatForm>
+                <ChatMessage ref="chatMessage"></ChatMessage>
+                <ChatForm @message-added="addMessageCallback"></ChatForm>
             </div>
         </div>
     </div>
@@ -14,10 +14,15 @@
 import ChatMessage from './ChatMessageComponent.vue'
 import ChatForm from './ChatFormComponent.vue'
 export default {
-    name: 'App',
+    name: 'MainApp',
     components: {
         ChatMessage,
         ChatForm
+    },
+    methods: {
+        addMessageCallback(message) {
+            this.$refs.chatMessage.setMessage(message)
+        }
     }
 }
 </script>

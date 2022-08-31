@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ChatController::class, 'index'])->name('chatapp.home');
+Route::get('/message', [MessageController::class, 'getBySession'])->name('chatapp.message.get_by_session');
+Route::post('/message', [MessageController::class, 'store'])->name('chatapp.message.store');
