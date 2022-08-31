@@ -25,4 +25,9 @@ return [
     'ua_append' => [
         'L5MOD/' . AwsServiceProvider::VERSION,
     ],
+    'lex' => [
+        'bot_id' => env('AWS_BOT_ID', ''),
+        'bot_alias_id' => env('AWS_BOT_ALIAS_ID', ''),
+        'bot_locale' => env('AWS_BOT_LOCALE_ID', ''),
+    ]
 ];
